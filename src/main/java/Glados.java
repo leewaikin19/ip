@@ -41,13 +41,26 @@ public class Glados {
                 try {
                     index = Integer.parseInt(userInput) - 1;
                 } catch (NumberFormatException e) {
-                    System.out.println("Only use numbers after mark!");
+                    System.out.println("Only use numbers after unmark!");
                     continue;
                 }
                 Task targetTask = items.get(index);
                 targetTask.isDone = false;
                 System.out.println("OK, I've marked this task as not done yet:\n" 
                         + targetTask);
+            } else if (userInput.startsWith("delete ")) {
+                userInput = userInput.replaceFirst("delete ", "");
+                int index = 0;
+                try {
+                    index = Integer.parseInt(userInput) - 1;
+                } catch (NumberFormatException e) {
+                    System.out.println("Only use numbers after delete!");
+                    continue;
+                }
+                Task targetTask = items.get(index);
+                items.remove(index);
+                System.out.println("Got it. I've removed this task:\n" + targetTask
+                        + "\nNow you have " + items.size() + " tasks in the list.");
             } else if (userInput.startsWith("todo ")) {
                 userInput = userInput.replaceFirst("todo ", "");
                 if (userInput.isBlank()) {
