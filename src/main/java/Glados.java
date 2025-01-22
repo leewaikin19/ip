@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Glados {
     private static ArrayList<Task> items = new ArrayList<Task>();
@@ -34,6 +36,38 @@ public class Glados {
                 targetTask.isDone = false;
                 System.out.println("OK, I've marked this task as not done yet:\n" 
                         + targetTask);
+            } else if (userInput.startsWith("todo ")) {
+                userInput = userInput.replace("todo ", "");
+                Task newItem = new Todo(userInput);
+                items.add(newItem);
+                System.out.println("Got it. I've added this task:\n" + newItem 
+                        + "\nNow you have " + items.size() + " tasks in the list.");
+            } else if (userInput.startsWith("deadline ")) {
+                userInput = userInput.replace("deadline ", "");
+                Task newItem = new Deadline(userInput.split(" /by ")[0].stripTrailing(), 
+                        userInput.split(" /by ")[1].stripTrailing());
+                items.add(newItem);
+                System.out.println("Got it. I've added this task:\n" + newItem 
+                        + "\nNow you have " + items.size() + " tasks in the list.");
+            } else if (userInput.startsWith("event ")) {
+                userInput = userInput.replace("event ", "");
+                String description = "";
+                String from = "";
+                String to = "";
+                String[] commands = userInput.split("/");
+                for (int i = 0; i < commands.length; i++) {
+                    if (commands[i].startsWith("from ")) {
+                        from = commands[i].replace("from ", "").stripTrailing();
+                    } else if (commands[i].startsWith("to ")) {
+                        to = commands[i].replace("to ", "").stripTrailing();
+                    } else {
+                        description = commands[i].stripTrailing();
+                    }
+                }
+                Task newItem = new Event(description, from, to);
+                items.add(newItem);
+                System.out.println("Got it. I've added this task:\n" + newItem 
+                        + "\nNow you have " + items.size() + " tasks in the list.");
             } else {
                 items.add(new Task(userInput));
                 System.out.println("added: " + userInput);
