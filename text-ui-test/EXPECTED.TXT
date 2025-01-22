@@ -1,7 +1,30 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Ah, thou art here! I am Glados, at thy service - if such a thing may be called service.
+How may I, in my immeasurable greatness, deign to assist thee, thou artless hedge-born scullion?
 
+Got it. I've added this task:
+[T][ ] todo 1
+Now you have 1 tasks in the list.
+Got it. I've added this task:
+[E][ ] event 1 (from: from1 to: to1)
+Now you have 2 tasks in the list.
+Got it. I've added this task:
+[D][ ] deadline 1 (by: by1)
+Now you have 3 tasks in the list.
+Got it. I've added this task:
+[E][ ] event 2 (from: from 2 to: to 2)
+Now you have 4 tasks in the list.
+Got it. I've added this task:
+[D][ ] deadline 2 (by: by 2)
+Now you have 5 tasks in the list.
+Nice! I've marked this task as done:
+[E][X] event 2 (from: from 2 to: to 2)
+Nice! I've marked this task as done:
+[D][X] deadline 1 (by: by1)
+OK, I've marked this task as not done yet:
+[D][ ] deadline 1 (by: by1)
+1. [T][ ] todo 1
+2. [E][ ] event 1 (from: from1 to: to1)
+3. [D][ ] deadline 1 (by: by1)
+4. [E][X] event 2 (from: from 2 to: to 2)
+5. [D][ ] deadline 2 (by: by 2)
+Begone, thou pribbling, ill-nurtured knave!I care not when our paths cross again, for I hold thy presence in contempt!

@@ -1,0 +1,10 @@
+todo todo 1
+event event 1 /from from1 /to to1
+deadline deadline 1 /by by1
+event event 2 /to to 2 /from from 2
+deadline deadline 2 /by by 2
+mark 4
+mark 3
+unmark 3
+list
+bye
