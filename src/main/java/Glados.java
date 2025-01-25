@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import javax.imageio.IIOException;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.nio.file.Path;
@@ -9,6 +7,10 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Glados {
     private static ArrayList<Task> items = new ArrayList<Task>();
@@ -159,8 +161,38 @@ public class Glados {
                     System.out.println("Deadline /by field cannot be empty. Please try again.");
                     continue;
                 }
-                Task newItem = new Deadline(userInput.split("/by ")[0].stripTrailing(), 
-                        userInput.split("/by ")[1].stripTrailing());
+                String[] params = userInput.split("/by ");
+                String[] formats = {"d/M/yyyy", "d/M/yyyy HHmm", "d/M/yyyy hh:mm a", "d/M/yyyy hh:mm:ss a", "yyyy/M/d", "yyyy/M/d", "yyyy/M/d hh:mm a", "yyyy/M/d hh:mm:ss a", "d-M-yyyy", "d-M-yyyy HHmm", "d-M-yyyy hh:mm a", "d-M-yyyy hh:mm:ss a", "yyyy-M-d", "yyyy-M-d", "yyyy-M-d hh:mm a", "yyyy-M-d hh:mm:ss a"};
+                Boolean isDate = false;
+                Boolean isDateTime = false;
+                LocalDate date = null;
+                LocalDateTime dateTime = null;
+                for (String format: formats) {
+                    try {
+                        dateTime = LocalDateTime.parse(params[1], DateTimeFormatter.ofPattern(format));
+                        isDateTime = true;
+                        break;
+                    } catch (DateTimeParseException e) {
+                        //System.out.println(e.getMessage());
+                    }
+                    try {
+                        date = LocalDate.parse(params[1], DateTimeFormatter.ofPattern(format));
+                        isDate = true;
+                        break;
+                    } catch (DateTimeParseException e) {
+                        //System.out.println(e.getMessage());
+                    }
+                }
+                Task newItem = null;
+                if (isDate) {
+                    newItem = new Deadline(params[0].stripTrailing(), date.toString());
+                } else if (isDateTime) {
+                    newItem = new Deadline(params[0].stripTrailing(), dateTime.toString());
+                } else {
+                    newItem = new Deadline(params[0].stripTrailing(), 
+                       params[1].stripTrailing());
+                }
+                
                 items.add(newItem);
                 System.out.println("Got it. I've added this task:\n" + newItem 
                         + "\nNow you have " + items.size() + " tasks in the list.");
