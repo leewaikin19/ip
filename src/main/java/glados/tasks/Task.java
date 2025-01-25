@@ -1,4 +1,6 @@
 package glados.tasks;
+
+/** Task that can be stored in the task list */
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -8,9 +10,18 @@ public class Task {
         this.isDone = false;
     }
 
+    /** 
+     * Returns 'X' if task is done, ' ' otherwise
+     * @return String
+     */
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }
+    
+    /** 
+     * Sets the isDone field of the task
+     * @param isDone
+     */
     public void setDone(Boolean isDone) {
         this.isDone = isDone;
     }

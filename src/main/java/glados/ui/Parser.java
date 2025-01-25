@@ -11,8 +11,14 @@ import glados.commands.RemoveTaskCommand;
 import glados.commands.UpdateTaskCommand;
 import glados.exceptions.ParserException;
 
-
+/** Class to handle parsing of user inputs */
 public class Parser {
+    
+    /** 
+     * Parses a string into a DateTime format. Returns null if string is not a date or time. 
+     * @param str String to be parsed
+     * @return LocalDateTime Parsed datetime 
+     */
     private static LocalDateTime parseDateTime(String str) {
         String[] formats = {"d/M/yyyy", "d/M/yyyy HHmm", "d/M/yyyy hh:mm a", "d/M/yyyy hh:mm:ss a", "yyyy/M/d", "yyyy/M/d", "yyyy/M/d hh:mm a", "yyyy/M/d hh:mm:ss a", "d-M-yyyy", "d-M-yyyy HHmm", "d-M-yyyy hh:mm a", "d-M-yyyy hh:mm:ss a", "yyyy-M-d", "yyyy-M-d", "yyyy-M-d hh:mm a", "yyyy-M-d hh:mm:ss a"};
         LocalDate date = null;
@@ -37,6 +43,13 @@ public class Parser {
         }
         return dateTime;
     }
+    
+    /** 
+     * Parses user inputs by commands.
+     * @param command String to be parsed
+     * @return Command Parsed command
+     * @throws ParserException If command is not valid
+     */
     public static Command parse(String command) throws ParserException {
         if (command == null) {
             return new Command("");

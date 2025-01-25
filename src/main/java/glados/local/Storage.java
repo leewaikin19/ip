@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
+/** Class to handle Local Storage */
 public class Storage {
     private Path path;
 
@@ -23,6 +24,11 @@ public class Storage {
         path = Paths.get(home, "data.txt");
     }
 
+    
+    /** 
+     * Saves task list to local data file
+     * @param tasks task list to be saved
+     */
     public void saveData(TaskList tasks) {
         try {
             String dataToSave = "";
@@ -34,6 +40,12 @@ public class Storage {
             System.err.println("An error occurred while saving the file: " + e.getMessage());
         }
     }
+    
+    /** 
+     * Parses local data file into a task list
+     * @return ArrayList<Task> task list to be returned
+     * @throws StorageException If data file contains lines that are corrupted
+     */
     public ArrayList<Task> loadData() throws StorageException {
         ArrayList<Task> taskList = new ArrayList<>();
         try {

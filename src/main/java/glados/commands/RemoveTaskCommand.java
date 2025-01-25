@@ -4,6 +4,7 @@ import glados.tasks.Task;
 import glados.tasks.TaskList;
 import glados.ui.Ui;
 
+/** Command to remove a task by index */
 public class RemoveTaskCommand extends Command {
     private int index;
 

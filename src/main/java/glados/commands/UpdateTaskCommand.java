@@ -4,6 +4,7 @@ import glados.tasks.Task;
 import glados.tasks.TaskList;
 import glados.ui.Ui;
 
+/** Command to update status of a task */
 public class UpdateTaskCommand extends Command {
     private int index;
     private Boolean isDone;

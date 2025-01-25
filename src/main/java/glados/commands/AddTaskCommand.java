@@ -10,13 +10,23 @@ import glados.tasks.Todo;
 import glados.ui.Ui;
 import glados.exceptions.CommandException;
 
+/** Command to add a task to the list */
 public class AddTaskCommand extends Command {
+    /** Description of the task */
     protected String description;
+
+    /** By field for Deadline */
     protected String by;
+
+    /** By field as a DateTime object for Deadline */
     protected LocalDateTime byDateTime;
+    /** From field for Event */
     protected String from;
+    /** To field for Event */
     protected String to;
+    /** From field as a DateTime object for Event */
     protected LocalDateTime fromDateTime;
+    /** To field as a DateTime object for Event */
     protected LocalDateTime toDateTime;
 
     public AddTaskCommand(String command, String description) throws CommandException {

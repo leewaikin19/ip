@@ -1,6 +1,7 @@
 package glados.tasks;
 import java.time.LocalDateTime;
 
+/** Event Task that must have a to and from field. */
 public class Event extends Task {
     protected String to;
     protected String from;

@@ -4,6 +4,7 @@ import glados.exceptions.GladosException;
 import glados.local.Storage;
 import glados.tasks.TaskList;
 
+/** Main program class */
 public class Glados {
     private TaskList tasks;
     private Ui ui;
