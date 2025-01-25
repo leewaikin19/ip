@@ -1,3 +1,13 @@
 [T][ ] asd
 [E][X] asd (from: a to: asd)
 [D][ ] asd (by: 12345)
+[D][ ] asd (by: 2014-11-10T18:00)
+[T][ ] lfknewfkrf
+[D][ ] awqe (by: 123)
+[E][ ] qwer1 (from: asd to: 123)
+[E][ ] 2025 (from: 25 to: 31)
+[E][ ] asd (from: /from 123 to: /to asd)
+[E][ ] asd /fro (from:  123 /t to:  asd)
+[E][ ] asd (from: 123 to: asd)
+[E][ ] asd (from: 25/1/2025 to: asd)
+[E][ ] asd (from: 2025-01-25T00:00 to: 2024-01-12T00:00)
