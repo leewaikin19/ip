@@ -1,5 +1,6 @@
+package glados.exceptions;
 public class CommandException extends GladosException{
-    CommandException(String msg) {
+    public CommandException(String msg) {
         super(msg);
     }
 }

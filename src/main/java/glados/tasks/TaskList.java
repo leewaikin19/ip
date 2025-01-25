@@ -1,12 +1,13 @@
+package glados.tasks;
 import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> taskList;
-    TaskList() {
+    public TaskList() {
         taskList = new ArrayList<Task>();
     }
 
-    TaskList(ArrayList<Task> taskList) {
+    public TaskList(ArrayList<Task> taskList) {
         this.taskList = taskList;
     }
     public int size() {

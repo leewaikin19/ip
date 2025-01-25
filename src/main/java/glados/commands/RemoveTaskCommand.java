@@ -1,7 +1,13 @@
+package glados.commands;
+import glados.local.Storage;
+import glados.tasks.Task;
+import glados.tasks.TaskList;
+import glados.ui.Ui;
+
 public class RemoveTaskCommand extends Command {
     private int index;
 
-    RemoveTaskCommand(String command, int index) {
+    public RemoveTaskCommand(String command, int index) {
         super(command);
         this.index = index;
     }

@@ -1,7 +1,16 @@
+package glados.local;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import glados.exceptions.StorageException;
+import glados.tasks.Deadline;
+import glados.tasks.Event;
+import glados.tasks.Task;
+import glados.tasks.TaskList;
+import glados.tasks.Todo;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -9,7 +18,7 @@ import java.nio.file.Files;
 public class Storage {
     private Path path;
 
-    Storage(String filePath) {
+    public Storage(String filePath) {
         String home = System.getProperty("user.dir");
         path = Paths.get(home, "data.txt");
     }
@@ -36,7 +45,7 @@ public class Storage {
                     isDone = line.startsWith("[X]");
                     line = line.substring(4);
                     Task task = new Todo(line);
-                    task.isDone = isDone;
+                    task.setDone(isDone); 
                     taskList.add(task);
                 } else if (line.startsWith("[D]")) {
                     line = line.replaceFirst("\\[D\\]", "");
@@ -45,7 +54,7 @@ public class Storage {
                     String[] params = line.split("\\(by: ",2);
                     Task task = new Deadline(params[0].stripTrailing(), 
                     params[1].substring(0, params[1].length() - 1));
-                    task.isDone = isDone;
+                    task.setDone(isDone); 
                     taskList.add(task);
                 } else if (line.startsWith("[E]")) {
                     line = line.replaceFirst("\\[E\\]", "");
@@ -55,7 +64,7 @@ public class Storage {
                     String[] params2 = params[1].split(" to: ", 2);
                     Task task = new Event(params[0].stripTrailing(), 
                     params2[0], params2[1].substring(0, params2[1].length() - 1));
-                    task.isDone = isDone;
+                    task.setDone(isDone); 
                     taskList.add(task);
                 } else {
                     throw new StorageException("An error occured while parsing data");

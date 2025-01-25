@@ -1,5 +1,6 @@
+package glados.exceptions;
 public class StorageException extends GladosException{
-    StorageException(String msg) {
+    public StorageException(String msg) {
         super(msg);
     }
 }

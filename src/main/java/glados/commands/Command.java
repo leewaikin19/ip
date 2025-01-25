@@ -1,8 +1,13 @@
+package glados.commands;
+import glados.local.Storage;
+import glados.tasks.TaskList;
+import glados.ui.Ui;
+
 public class Command {
     private Boolean isExit = false;
     private String command;
 
-    Command(String command) {
+    public Command(String command) {
         this.command = command;
         if (command.equals("exit")) {
             isExit = true;

@@ -1,5 +1,6 @@
+package glados.exceptions;
 public class ParserException extends GladosException {
-    ParserException(String msg) {
+    public ParserException(String msg) {
         super(msg);
     }
 }

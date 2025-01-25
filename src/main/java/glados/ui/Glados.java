@@ -1,3 +1,9 @@
+package glados.ui;
+import glados.commands.Command;
+import glados.exceptions.GladosException;
+import glados.local.Storage;
+import glados.tasks.TaskList;
+
 public class Glados {
     private TaskList tasks;
     private Ui ui;
