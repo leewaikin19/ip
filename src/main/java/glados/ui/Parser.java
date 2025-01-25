@@ -24,7 +24,9 @@ public class Parser {
      */
     private static LocalDateTime parseDateTime(String str) {
         String[] formats = { "d/M/yyyy", "d/M/yyyy HHmm", "d/M/yyyy hh:mm a", "d/M/yyyy hh:mm:ss a", "yyyy/M/d",
+
                 "yyyy/M/d", "yyyy/M/d hh:mm a", "yyyy/M/d hh:mm:ss a", "d-M-yyyy", "d-M-yyyy HHmm", "d-M-yyyy hh:mm a",
+
                 "d-M-yyyy hh:mm:ss a", "yyyy-M-d", "yyyy-M-d", "yyyy-M-d hh:mm a", "yyyy-M-d hh:mm:ss a" };
         LocalDate date = null;
         LocalDateTime dateTime = null;
@@ -44,6 +46,7 @@ public class Parser {
             if (date == null) {
                 return null;
             }
+            dateTime = LocalDateTime.of(date, LocalTime.of(0, 0, 0));
             dateTime = LocalDateTime.of(date, LocalTime.of(0, 0, 0));
         }
         return dateTime;
@@ -66,6 +69,9 @@ public class Parser {
             return new Command("exit");
         } else if (command.equals("list")) {
             return new Command("list");
+        } else if (command.startsWith("find ")) {
+            command = command.replaceFirst("find ", "");
+            return new Command("find", command);
         } else if (command.startsWith("mark ")) {
             command = command.replaceFirst("mark ", "");
             int index = 0;

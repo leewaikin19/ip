@@ -53,6 +53,22 @@ public class TaskList {
         taskList.add(task);
     }
 
+    /**
+     * Returns a task list with descriptions containing the query
+     * 
+     * @param query search query
+     * @return TaskList list of tasks that matches query
+     */
+    public TaskList find(String query) {
+        ArrayList<Task> result = new ArrayList<>();
+        for (Task task : taskList) {
+            if (task.description.contains(query)) {
+                result.add(task);
+            }
+        }
+        return new TaskList(result);
+    }
+
     public String toString() {
         String result = "";
         for (int i = 0; i < taskList.size(); i++) {
