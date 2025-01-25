@@ -1,4 +1,5 @@
 package glados.commands;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import glados.tasks.TaskList;
@@ -19,7 +20,7 @@ public class UpdateTaskCommandTest {
         command2.execute(tasks, ui, storage);
         assertEquals(tasks.get(0).toString(), "[T][X] description");
     }
-    
+
     @Test
     public void unmarkTest() {
         TaskList tasks = new TaskList();

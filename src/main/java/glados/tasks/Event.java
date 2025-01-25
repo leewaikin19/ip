@@ -1,4 +1,5 @@
 package glados.tasks;
+
 import java.time.LocalDateTime;
 
 /** Event Task that must have a to and from field. */
@@ -13,7 +14,8 @@ public class Event extends Task {
         this.from = from;
         this.to = to;
     }
-    public Event(String description, LocalDateTime fromDateTime, LocalDateTime toDateTime, 
+
+    public Event(String description, LocalDateTime fromDateTime, LocalDateTime toDateTime,
             String from, String to) {
         super(description);
         this.fromDateTime = fromDateTime;
@@ -21,7 +23,7 @@ public class Event extends Task {
         this.from = from;
         this.to = to;
     }
-    
+
     public String toString() {
         return fromDateTime == null || toDateTime == null
                 ? "[E]" + super.toString() + " (from: " + from + " to: " + to + ")"

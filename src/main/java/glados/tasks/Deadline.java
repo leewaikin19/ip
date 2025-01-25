@@ -1,4 +1,5 @@
 package glados.tasks;
+
 import java.time.LocalDateTime;
 
 /** Deadline Task that must have a by field */
@@ -16,7 +17,7 @@ public class Deadline extends Task {
         this.byDateTime = byDateTime;
         this.by = by;
     }
-    
+
     public String toString() {
         return by == null
                 ? "[D]" + super.toString() + " (by: " + byDateTime + ")"

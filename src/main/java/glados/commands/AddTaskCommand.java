@@ -1,4 +1,5 @@
 package glados.commands;
+
 import java.time.LocalDateTime;
 
 import glados.local.Storage;
@@ -39,6 +40,7 @@ public class AddTaskCommand extends Command {
         }
         this.description = description;
     }
+
     public AddTaskCommand(String command, String description, String by) throws CommandException {
         super(command);
         if (!command.equals("deadline")) {
@@ -50,11 +52,12 @@ public class AddTaskCommand extends Command {
         this.description = description;
         this.by = by;
     }
+
     public AddTaskCommand(String command, String description, LocalDateTime by) throws CommandException {
         super(command);
         if (!command.equals("deadline")) {
             throw new CommandException("An unexpected error has occured");
-         }
+        }
         if (description.isBlank()) {
             throw new CommandException("Deadline description cannot be blank");
         }
@@ -62,12 +65,12 @@ public class AddTaskCommand extends Command {
         this.byDateTime = by;
     }
 
-    public AddTaskCommand(String command, String description, String from, String to) 
+    public AddTaskCommand(String command, String description, String from, String to)
             throws CommandException {
         super(command);
         if (!command.equals("event")) {
             throw new CommandException("An unexpected error has occured");
-         }
+        }
         if (description.isBlank()) {
             throw new CommandException("Event description cannot be blank");
         }
@@ -75,11 +78,12 @@ public class AddTaskCommand extends Command {
         this.from = from;
         this.to = to;
     }
-    public AddTaskCommand(String command, String description, 
+
+    public AddTaskCommand(String command, String description,
             LocalDateTime from, LocalDateTime to) throws CommandException {
         super(command);
         if (!command.equals("event") || from == null || to == null) {
-           throw new CommandException("An unexpected error has occured");
+            throw new CommandException("An unexpected error has occured");
         }
         if (description.isBlank()) {
             throw new CommandException("Event description cannot be blank");
@@ -88,15 +92,16 @@ public class AddTaskCommand extends Command {
         this.fromDateTime = from;
         this.toDateTime = to;
     }
+
     public void execute(TaskList tasks, Ui ui, Storage storage) throws CommandException {
         Task newItem;
-        if (getCommand().equals("todo")){
+        if (getCommand().equals("todo")) {
             newItem = new Todo(description);
-        } else if (getCommand().equals("deadline")){
-            newItem = byDateTime == null 
+        } else if (getCommand().equals("deadline")) {
+            newItem = byDateTime == null
                     ? new Deadline(description, by)
                     : new Deadline(description, byDateTime, by);
-        } else if (getCommand().equals("event")){
+        } else if (getCommand().equals("event")) {
             newItem = fromDateTime == null || toDateTime == null
                     ? new Event(description, from, to)
                     : new Event(description, fromDateTime, toDateTime, from, to);
@@ -104,8 +109,8 @@ public class AddTaskCommand extends Command {
             throw new CommandException("Unknown error has occured");
         }
         tasks.add(newItem);
-        Ui.show("Got it. I've added this task:\n" + newItem 
-                    + "\nNow you have " + tasks.size() + " tasks in the list.\n");
+        Ui.show("Got it. I've added this task:\n" + newItem
+                + "\nNow you have " + tasks.size() + " tasks in the list.\n");
         storage.saveData(tasks);
     }
 }

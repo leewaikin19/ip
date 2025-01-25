@@ -1,4 +1,5 @@
 package glados.commands;
+
 import glados.local.Storage;
 import glados.tasks.TaskList;
 import glados.ui.Ui;
@@ -14,20 +15,22 @@ public class Command {
             isExit = true;
         }
     }
-    
-    /** 
-     * Returns command 
+
+    /**
+     * Returns command
+     * 
      * @return String command
      */
+
     public String getCommand() {
         return command;
     }
-    
-    /** 
+
+    /**
      * Executes task
      * 
-     * @param tasks task list of the program
-     * @param ui ui of the program
+     * @param tasks   task list of the program
+     * @param ui      ui of the program
      * @param storage local storage of the program
      */
     public void execute(TaskList tasks, Ui ui, Storage storage) {
@@ -41,11 +44,13 @@ public class Command {
                 break;
         }
     }
-    
-    /** 
+
+    /**
      * Returns true if the command exits the program
+     * 
      * @return Boolean isExit property
      */
+
     public Boolean isExit() {
         return isExit;
     }

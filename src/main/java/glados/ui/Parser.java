@@ -1,4 +1,5 @@
 package glados.ui;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -13,17 +14,21 @@ import glados.exceptions.ParserException;
 
 /** Class to handle parsing of user inputs */
 public class Parser {
-    
-    /** 
-     * Parses a string into a DateTime format. Returns null if string is not a date or time. 
+
+    /**
+     * Parses a string into a DateTime format. Returns null if string is not a date
+     * or time.
+     * 
      * @param str String to be parsed
-     * @return LocalDateTime Parsed datetime 
+     * @return LocalDateTime Parsed datetime
      */
     private static LocalDateTime parseDateTime(String str) {
-        String[] formats = {"d/M/yyyy", "d/M/yyyy HHmm", "d/M/yyyy hh:mm a", "d/M/yyyy hh:mm:ss a", "yyyy/M/d", "yyyy/M/d", "yyyy/M/d hh:mm a", "yyyy/M/d hh:mm:ss a", "d-M-yyyy", "d-M-yyyy HHmm", "d-M-yyyy hh:mm a", "d-M-yyyy hh:mm:ss a", "yyyy-M-d", "yyyy-M-d", "yyyy-M-d hh:mm a", "yyyy-M-d hh:mm:ss a"};
+        String[] formats = { "d/M/yyyy", "d/M/yyyy HHmm", "d/M/yyyy hh:mm a", "d/M/yyyy hh:mm:ss a", "yyyy/M/d",
+                "yyyy/M/d", "yyyy/M/d hh:mm a", "yyyy/M/d hh:mm:ss a", "d-M-yyyy", "d-M-yyyy HHmm", "d-M-yyyy hh:mm a",
+                "d-M-yyyy hh:mm:ss a", "yyyy-M-d", "yyyy-M-d", "yyyy-M-d hh:mm a", "yyyy-M-d hh:mm:ss a" };
         LocalDate date = null;
         LocalDateTime dateTime = null;
-        for (String format: formats) {
+        for (String format : formats) {
             try {
                 dateTime = LocalDateTime.parse(str, DateTimeFormatter.ofPattern(format));
                 break;
@@ -39,17 +44,19 @@ public class Parser {
             if (date == null) {
                 return null;
             }
-            dateTime = LocalDateTime.of(date, LocalTime.of(0,0,0));
+            dateTime = LocalDateTime.of(date, LocalTime.of(0, 0, 0));
         }
         return dateTime;
     }
-    
-    /** 
+
+    /**
      * Parses user inputs by commands.
+     * 
      * @param command String to be parsed
      * @return Command Parsed command
      * @throws ParserException If command is not valid
      */
+
     public static Command parse(String command) throws ParserException {
         if (command == null) {
             return new Command("");
@@ -104,7 +111,7 @@ public class Parser {
                 throw new ParserException("Deadline /by field cannot be empty. Please try again.");
             }
             String[] params = command.split("/by ");
-            
+
             LocalDateTime dateTime = parseDateTime(params[1]);
             if (dateTime == null) {
                 return new AddTaskCommand("deadline", params[0].stripTrailing(), params[1]);
