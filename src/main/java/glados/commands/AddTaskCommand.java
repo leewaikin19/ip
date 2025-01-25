@@ -11,13 +11,13 @@ import glados.ui.Ui;
 import glados.exceptions.CommandException;
 
 public class AddTaskCommand extends Command {
-    private String description;
-    private String by;
-    private LocalDateTime byDateTime;
-    private String from;
-    private String to;
-    private LocalDateTime fromDateTime;
-    private LocalDateTime toDateTime;
+    protected String description;
+    protected String by;
+    protected LocalDateTime byDateTime;
+    protected String from;
+    protected String to;
+    protected LocalDateTime fromDateTime;
+    protected LocalDateTime toDateTime;
 
     public AddTaskCommand(String command, String description) throws CommandException {
         super(command);

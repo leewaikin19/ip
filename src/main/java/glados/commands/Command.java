@@ -4,8 +4,8 @@ import glados.tasks.TaskList;
 import glados.ui.Ui;
 
 public class Command {
-    private Boolean isExit = false;
-    private String command;
+    protected Boolean isExit = false;
+    protected String command;
 
     public Command(String command) {
         this.command = command;

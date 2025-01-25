@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Ui {
     private Scanner scanner;
-    Ui() {
+    public Ui() {
         scanner = new Scanner(System.in);
     }
     
