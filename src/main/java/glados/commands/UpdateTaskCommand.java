@@ -1,4 +1,5 @@
 package glados.commands;
+
 import glados.local.Storage;
 import glados.tasks.Task;
 import glados.tasks.TaskList;
@@ -15,6 +16,7 @@ public class UpdateTaskCommand extends Command {
         this.isDone = isDone;
         this.msg = msg;
     }
+
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         Task targetTask = tasks.get(index);
         targetTask.setDone(isDone);

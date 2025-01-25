@@ -1,4 +1,5 @@
 package glados.ui;
+
 import glados.commands.Command;
 import glados.exceptions.GladosException;
 import glados.local.Storage;
@@ -19,6 +20,7 @@ public class Glados {
             tasks = new TaskList();
         }
     }
+
     public void run() {
         Ui.showWelcomeMessage();
         while (true) {
@@ -26,7 +28,7 @@ public class Glados {
             try {
                 Command c = Parser.parse(command);
                 c.execute(tasks, ui, storage);
-                if(c.isExit()) {
+                if (c.isExit()) {
                     ui.close();
                     break;
                 }

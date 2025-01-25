@@ -1,4 +1,5 @@
 package glados.commands;
+
 import glados.local.Storage;
 import glados.tasks.TaskList;
 import glados.ui.Ui;
@@ -13,10 +14,11 @@ public class Command {
             isExit = true;
         }
     }
+
     public String getCommand() {
         return command;
     }
-    
+
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         switch (command) {
             case "exit":
@@ -28,6 +30,7 @@ public class Command {
                 break;
         }
     }
+
     public Boolean isExit() {
         return isExit;
     }

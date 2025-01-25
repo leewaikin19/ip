@@ -1,4 +1,5 @@
 package glados.tasks;
+
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -11,9 +12,11 @@ public class Task {
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }
+
     public void setDone(Boolean isDone) {
         this.isDone = isDone;
     }
+
     public String toString() {
         return "[" + getStatusIcon() + "] " + this.description;
     }

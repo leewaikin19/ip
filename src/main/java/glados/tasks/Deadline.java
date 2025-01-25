@@ -1,4 +1,5 @@
 package glados.tasks;
+
 import java.time.LocalDateTime;
 
 public class Deadline extends Task {
@@ -15,7 +16,7 @@ public class Deadline extends Task {
         this.byDateTime = byDateTime;
         this.by = by;
     }
-    
+
     public String toString() {
         return by == null
                 ? "[D]" + super.toString() + " (by: " + byDateTime + ")"

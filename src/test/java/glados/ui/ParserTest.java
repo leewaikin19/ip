@@ -1,4 +1,5 @@
 package glados.ui;
+
 import org.junit.jupiter.api.Test;
 
 import glados.commands.Command;

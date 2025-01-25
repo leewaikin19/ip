@@ -1,4 +1,5 @@
 package glados.commands;
+
 import glados.local.Storage;
 import glados.tasks.Task;
 import glados.tasks.TaskList;
@@ -11,11 +12,12 @@ public class RemoveTaskCommand extends Command {
         super(command);
         this.index = index;
     }
+
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         Task targetTask = tasks.get(index);
         tasks.remove(index);
         Ui.show("Got it. I've removed this task:\n" + targetTask
-                    + "\nNow you have " + tasks.size() + " tasks in the list.\n");
+                + "\nNow you have " + tasks.size() + " tasks in the list.\n");
         storage.saveData(tasks);
     }
 }
