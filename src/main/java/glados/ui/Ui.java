@@ -26,7 +26,10 @@ public class Ui {
                         + "for I hold thy presence in contempt!\n");
     }
     public String readLine() {
-        return scanner.nextLine();
+        if (scanner.hasNextLine()) {
+            return scanner.nextLine();
+        }
+        return null;
     }
     public static void show(String message) {
         System.out.println(message);

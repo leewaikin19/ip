@@ -38,6 +38,9 @@ public class Parser {
         return dateTime;
     }
     public static Command parse(String command) throws ParserException {
+        if (command == null) {
+            return new Command("");
+        }
         if (command.equals("bye")) {
             Ui.showExitMessage();
             return new Command("exit");
