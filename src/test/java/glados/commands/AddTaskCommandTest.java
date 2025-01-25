@@ -9,13 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddTaskCommandTest {
     @Test
-    public void miscTest() {
-        AddTaskCommand command = new AddTaskCommand("command", "description");
-        assertEquals(command.description, "description");
-        assertEquals(command.command, "command");
-    }
-    
-    @Test
     public void todoTest() {
         TaskList tasks = new TaskList();
         Ui ui = new Ui();

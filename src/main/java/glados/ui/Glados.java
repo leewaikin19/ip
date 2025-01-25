@@ -20,6 +20,7 @@ public class Glados {
         }
     }
     public void run() {
+        Ui.showWelcomeMessage();
         while (true) {
             String command = ui.readLine();
             try {
