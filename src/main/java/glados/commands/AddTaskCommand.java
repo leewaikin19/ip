@@ -93,7 +93,8 @@ public class AddTaskCommand extends Command {
         this.toDateTime = to;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws CommandException {
+    @Override
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws CommandException {
         Task newItem;
         if (getCommand().equals("todo")) {
             newItem = new Todo(description);
@@ -109,8 +110,9 @@ public class AddTaskCommand extends Command {
             throw new CommandException("Unknown error has occured");
         }
         tasks.add(newItem);
-        Ui.show("Got it. I've added this task:\n" + newItem
-                + "\nNow you have " + tasks.size() + " tasks in the list.\n");
+
         storage.saveData(tasks);
+        return "Got it. I've added this task:\n" + newItem
+                + "\nNow you have " + tasks.size() + " tasks in the list.";
     }
 }

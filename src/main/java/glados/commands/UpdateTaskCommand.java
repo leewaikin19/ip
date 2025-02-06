@@ -18,10 +18,12 @@ public class UpdateTaskCommand extends Command {
         this.msg = msg;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    @Override
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Task targetTask = tasks.get(index);
         targetTask.setDone(isDone);
-        Ui.show(msg + targetTask + "\n");
+
         storage.saveData(tasks);
+        return msg + targetTask;
     }
 }

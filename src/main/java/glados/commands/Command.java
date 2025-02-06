@@ -39,24 +39,23 @@ public class Command {
      * @param ui      ui of the program
      * @param storage local storage of the program
      */
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         switch (command) {
             case "exit":
-                break;
+                return ui.getExitMessage();
             case "list":
-                Ui.show(tasks.toString());
-                break;
+                return tasks.toString();
             case "find":
                 TaskList queryResults = tasks.find(query);
                 if (queryResults.size() == 0) {
-                    Ui.show("There are no search results. Please try again.");
+                    return "There are no search results. Please try again.";
                 } else {
-                    Ui.show(queryResults.toString());
+                    return queryResults.toString();
                 }
-                break;
             default:
                 break;
         }
+        return "Unkown command. Please try again.";
     }
 
     /**

@@ -4,6 +4,7 @@ import glados.commands.Command;
 import glados.exceptions.GladosException;
 import glados.local.Storage;
 import glados.tasks.TaskList;
+import javafx.stage.Stage;
 
 /** Main program class */
 public class Glados {
@@ -11,7 +12,7 @@ public class Glados {
     private Ui ui;
     private Storage storage;
 
-    Glados(String filePath) {
+    public Glados(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
         try {
@@ -37,6 +38,26 @@ public class Glados {
                 Ui.show(e.getMessage());
                 Ui.show("Please try again.");
             }
+        }
+    }
+
+    public String getWelcomeMessage() {
+        return Ui.getWelcomeMessage();
+    }
+
+    public String getResponse(String command, Stage stage) {
+        String response = "";
+        try {
+            Command c = Parser.parse(command);
+            response = c.execute(tasks, ui, storage);
+            if (c.isExit()) {
+                ui.close();
+
+                stage.close();
+            }
+            return response;
+        } catch (GladosException e) {
+            return e.getMessage() + "\nPlease try again.";
         }
     }
 

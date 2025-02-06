@@ -14,11 +14,13 @@ public class RemoveTaskCommand extends Command {
         this.index = index;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    @Override
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Task targetTask = tasks.get(index);
         tasks.remove(index);
-        Ui.show("Got it. I've removed this task:\n" + targetTask
-                + "\nNow you have " + tasks.size() + " tasks in the list.\n");
+
         storage.saveData(tasks);
+        return "Got it. I've removed this task:\n" + targetTask
+                + "\nNow you have " + tasks.size() + " tasks in the list.";
     }
 }

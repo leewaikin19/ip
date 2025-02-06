@@ -65,7 +65,6 @@ public class Parser {
             return new Command("");
         }
         if (command.equals("bye")) {
-            Ui.showExitMessage();
             return new Command("exit");
         } else if (command.equals("list")) {
             return new Command("list");

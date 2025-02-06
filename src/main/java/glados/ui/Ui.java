@@ -31,6 +31,19 @@ public class Ui {
                 + "for I hold thy presence in contempt!\n");
     }
 
+    public static String getWelcomeMessage() {
+        return "Ah, thou art here! I am Glados, at thy service "
+                + "- if such a thing may be called service.\n"
+                + "How may I, in my immeasurable greatness, "
+                + "deign to assist thee, thou artless hedge-born scullion?\n";
+    }
+
+    public static String getExitMessage() {
+        return "Begone, thou pribbling, ill-nurtured knave!"
+                + "I care not when our paths cross again, "
+                + "for I hold thy presence in contempt!\n";
+    }
+
     /**
      * Returns the next user input line, if exists.
      * 
