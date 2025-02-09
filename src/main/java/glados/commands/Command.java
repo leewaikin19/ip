@@ -40,6 +40,7 @@ public class Command {
      * @param storage local storage of the program
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) {
+        assert command != null && !command.isBlank();
         switch (command) {
             case "exit":
                 return Ui.getExitMessage();

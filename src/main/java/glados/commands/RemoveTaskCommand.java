@@ -12,6 +12,7 @@ public class RemoveTaskCommand extends Command {
     public RemoveTaskCommand(String command, int index) {
         super(command);
         this.index = index;
+        assert command != null && !command.isBlank();
     }
 
     @Override

@@ -13,6 +13,9 @@ public class Event extends Task {
         super(description);
         this.from = from;
         this.to = to;
+        assert description != null && !description.isBlank();
+        assert from != null && !from.isBlank();
+        assert to != null && !to.isBlank();
     }
 
     public Event(String description, LocalDateTime fromDateTime, LocalDateTime toDateTime,
@@ -22,6 +25,11 @@ public class Event extends Task {
         this.toDateTime = toDateTime;
         this.from = from;
         this.to = to;
+        assert description != null && !description.isBlank();
+        assert from != null && !from.isBlank();
+        assert to != null && !to.isBlank();
+        assert fromDateTime != null;
+        assert toDateTime != null;
     }
 
     public String toString() {
