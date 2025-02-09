@@ -16,6 +16,7 @@ public class UpdateTaskCommand extends Command {
         this.index = index;
         this.isDone = isDone;
         this.msg = msg;
+        assert command != null && !command.isBlank();
     }
 
     @Override

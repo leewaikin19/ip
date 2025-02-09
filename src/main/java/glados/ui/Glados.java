@@ -23,6 +23,9 @@ public class Glados {
         }
     }
 
+    /**
+     * Starts the program.
+     */
     public void run() {
         Ui.showWelcomeMessage();
         while (true) {
@@ -45,6 +48,13 @@ public class Glados {
         return Ui.getWelcomeMessage();
     }
 
+    /**
+     * Executes command and gets Glados' response .
+     * 
+     * @param command String that represents the command
+     * @param stage   JavaFX stage reference
+     * @return String Response of Glados
+     */
     public String getResponse(String command, Stage stage) {
         String response = "";
         try {

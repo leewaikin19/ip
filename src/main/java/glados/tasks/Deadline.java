@@ -10,12 +10,17 @@ public class Deadline extends Task {
     public Deadline(String description, String by) {
         super(description);
         this.by = by;
+        assert description != null && !description.isBlank();
+        assert by != null && !by.isBlank();
     }
 
     public Deadline(String description, LocalDateTime byDateTime, String by) {
         super(description);
         this.byDateTime = byDateTime;
         this.by = by;
+        assert description != null && !description.isBlank();
+        assert by != null && !by.isBlank();
+        assert byDateTime != null;
     }
 
     public String toString() {

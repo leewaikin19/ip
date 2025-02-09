@@ -9,12 +9,13 @@ public class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        assert description != null && !description.isBlank();
     }
 
     /**
      * Returns 'X' if task is done, ' ' otherwise
      * 
-     * @return String
+     * @return String Status of the task
      */
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
