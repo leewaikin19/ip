@@ -42,7 +42,7 @@ public class Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) {
         switch (command) {
             case "exit":
-                return ui.getExitMessage();
+                return Ui.getExitMessage();
             case "list":
                 return tasks.toString();
             case "find":
