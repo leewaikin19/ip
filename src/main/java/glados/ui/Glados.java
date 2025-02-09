@@ -62,7 +62,6 @@ public class Glados {
             response = c.execute(tasks, ui, storage);
             if (c.isExit()) {
                 ui.close();
-
                 stage.close();
             }
             return response;

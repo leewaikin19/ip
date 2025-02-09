@@ -68,6 +68,8 @@ public class Parser {
             return new Command("exit");
         } else if (command.equals("list")) {
             return new Command("list");
+        } else if (command.equals("help")) {
+            return new Command("help");
         } else if (command.startsWith("find ")) {
             command = command.replaceFirst("find ", "");
             return new Command("find", command);
