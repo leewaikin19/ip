@@ -15,9 +15,9 @@ public class TaskList {
     }
 
     /**
-     * Gets the size of the task list
+     * Gets the size of the task list.
      * 
-     * @return int size of the task list
+     * @return int Size of the task list
      */
 
     public int size() {
@@ -25,19 +25,19 @@ public class TaskList {
     }
 
     /**
-     * Gets the ith task
+     * Gets the ith task.
      * 
-     * @param index index
-     * @return Task task at index
+     * @param index Index
+     * @return Task Task at index
      */
     public Task get(int index) {
         return taskList.get(index);
     }
 
     /**
-     * Removes the ith task
+     * Removes the ith task.
      * 
-     * @param index index
+     * @param index Index
      */
     public void remove(int index) {
         taskList.remove(index);
@@ -54,9 +54,9 @@ public class TaskList {
     }
 
     /**
-     * Returns a task list with descriptions containing the query
+     * Returns a task list with descriptions containing the query.
      * 
-     * @param query search query
+     * @param query Search query
      * @return TaskList list of tasks that matches query
      */
     public TaskList find(String query) {
