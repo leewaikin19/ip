@@ -96,6 +96,7 @@ public class AddTaskCommand extends Command {
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws CommandException {
         Task newItem;
+        assert getCommand() != null && !getCommand().isBlank();
         if (getCommand().equals("todo")) {
             newItem = new Todo(description);
         } else if (getCommand().equals("deadline")) {
