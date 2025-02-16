@@ -19,6 +19,12 @@ Got it. I've added this task:
 [E][ ] CS2101 pair presentation (from: today to: next week)
 ```
 
+## Marking or unmarking tasks
+
+Once you have completed a task, you can mark it as done with `mark (task number)`. 
+
+Similarly, you can unmark a task with `unmark (task number)`. 
+
 ## Tracking tasks
 
 Glados helps you track all these tasks. 
