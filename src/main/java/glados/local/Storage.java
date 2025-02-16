@@ -43,43 +43,74 @@ public class Storage {
     }
 
     /**
+     * Parses a todo line into a task
+     * 
+     * @param line Stored line of the todo item
+     * @return Task Task object created
+     */
+    private Task loadTodo(String line) {
+        line = line.replaceFirst("\\[T\\]", "");
+        Boolean isDone = line.startsWith("[X]");
+        line = line.substring(4);
+        Task task = new Todo(line);
+        task.setDone(isDone);
+        return task;
+    }
+
+    /**
+     * Parses a deadline line into a task
+     * 
+     * @param line Stored line of the deadline item
+     * @return Task Task object created
+     */
+    private Task loadDeadine(String line) {
+        line = line.replaceFirst("\\[D\\]", "");
+        Boolean isDone = line.startsWith("[X]");
+        line = line.substring(4);
+        String[] params = line.split("\\(by: ", 2);
+        Task task = new Deadline(params[0].stripTrailing(),
+                params[1].substring(0, params[1].length() - 1));
+        task.setDone(isDone);
+        return task;
+    }
+
+    /**
+     * Parses a event line into a task
+     * 
+     * @param line Stored line of the event item
+     * @return Task Task object created
+     */
+    private Task loadEvent(String line) {
+        line = line.replaceFirst("\\[E\\]", "");
+        Boolean isDone = line.startsWith("[X]");
+        line = line.substring(4);
+        String[] params = line.split("\\(from: ", 2);
+        String[] params2 = params[1].split(" to: ", 2);
+        Task task = new Event(params[0].stripTrailing(),
+                params2[0], params2[1].substring(0, params2[1].length() - 1));
+        task.setDone(isDone);
+        return task;
+    }
+
+    /**
      * Parses local data file into a task list
      * 
      * @return ArrayList<Task> task list to be returned
      * @throws StorageException If data file contains lines that are corrupted
      */
-
     public ArrayList<Task> loadData() throws StorageException {
         ArrayList<Task> taskList = new ArrayList<>();
         try {
             List<String> file = Files.readAllLines(path);
             for (String line : file) {
-                Boolean isDone = false;
                 if (line.startsWith("[T]")) {
-                    line = line.replaceFirst("\\[T\\]", "");
-                    isDone = line.startsWith("[X]");
-                    line = line.substring(4);
-                    Task task = new Todo(line);
-                    task.setDone(isDone);
+                    Task task = loadTodo(line);
                     taskList.add(task);
                 } else if (line.startsWith("[D]")) {
-                    line = line.replaceFirst("\\[D\\]", "");
-                    isDone = line.startsWith("[X]");
-                    line = line.substring(4);
-                    String[] params = line.split("\\(by: ", 2);
-                    Task task = new Deadline(params[0].stripTrailing(),
-                            params[1].substring(0, params[1].length() - 1));
-                    task.setDone(isDone);
+                    Task task = loadDeadine(line);
                     taskList.add(task);
                 } else if (line.startsWith("[E]")) {
-                    line = line.replaceFirst("\\[E\\]", "");
-                    isDone = line.startsWith("[X]");
-                    line = line.substring(4);
-                    String[] params = line.split("\\(from: ", 2);
-                    String[] params2 = params[1].split(" to: ", 2);
-                    Task task = new Event(params[0].stripTrailing(),
-                            params2[0], params2[1].substring(0, params2[1].length() - 1));
-                    task.setDone(isDone);
+                    Task task = loadEvent(line);
                     taskList.add(task);
                 } else {
                     throw new StorageException("An error occured while parsing data");
@@ -89,7 +120,8 @@ public class Storage {
             try {
                 Files.createFile(path);
             } catch (IOException e2) {
-                System.out.println("Error: An error occurred while creating data file: " + e2.getMessage());
+                System.out.println("Error: An error occurred while creating data file: "
+                        + e2.getMessage());
             }
         }
         return taskList;

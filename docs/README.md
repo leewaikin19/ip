@@ -1,30 +1,44 @@
-# Duke User Guide
+# Glados User Guide
 
-// Update the title above to match the actual product name
+![](./Ui.png)
 
-// Product screenshot goes here
+Glados is a desktop task tracker that will manage your todos, events and deadlines for you. 
 
-// Product intro goes here
+## Adding todos, deadlines and events
 
-## Adding deadlines
+Todos are tasks without any start or end date. 
 
-// Describe the action and its outcome.
+Deadlines are tasks with a deadline.
 
-// Give examples of usage
+Events are tasks with a start and end date. 
 
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
+Example: `event CS2101 pair presentation /from today /to next week`
 
 ```
-expected output
+Got it. I've added this task:
+[E][ ] CS2101 pair presentation (from: today to: next week)
 ```
 
-## Feature ABC
+## Tracking tasks
 
-// Feature details
+Glados helps you track all these tasks. 
 
+To view all tasks, simply type `list`
 
-## Feature XYZ
+To search tasks by keyword, simply type `find (query)`
 
-// Feature details
+To delete a task, simply type `delete (task number)`
+
+Example: `find CS2101`
+
+```
+1. [E][ ] CS2101 pair presentation (from: today to: next week)
+```
+
+## Save tasks locally
+
+Glados autosaves all of your tasks locally, and loads them up everytime you open Glados. 
+
+## Help
+
+To get the syntax of all commands, type `help`. 

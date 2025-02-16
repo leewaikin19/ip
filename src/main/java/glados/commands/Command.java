@@ -9,6 +9,37 @@ public class Command {
     protected Boolean isExit = false;
     protected String command;
     protected String query;
+    private final String HELP_MESSAGE = """
+            Glados commands:
+
+            Add a todo entry
+                todo [description]
+
+            Add a deadline entry
+                deadline [description] /by [due date]
+
+            Add an event entry
+                event [description] /from [start date] /to [end date]
+
+            Mark/unmark a task as done/not done
+                mark [task number]
+                unmark [task number]
+
+            Prints all active tasks
+                list
+
+            Delete a task
+                delete [task number]
+
+            Find a task by description
+                find [search query]
+
+            Exit the program
+                exit
+
+            Show this help message.
+                help
+            """;
 
     public Command(String command) {
         this.command = command;
@@ -40,7 +71,6 @@ public class Command {
      * @param storage local storage of the program
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        assert command != null && !command.isBlank();
         switch (command) {
             case "exit":
                 return Ui.getExitMessage();
@@ -54,37 +84,7 @@ public class Command {
                     return queryResults.toString();
                 }
             case "help":
-                return """
-                        Glados commands:
-
-                        Add a todo entry
-                            todo [description]
-
-                        Add a deadline entry
-                            deadline [description] /by [due date]
-
-                        Add an event entry
-                            event [description] /from [start date] /to [end date]
-
-                        Mark/unmark a task as done/not done
-                            mark [task number]
-                            unmark [task number]
-
-                        Prints all active tasks
-                            list
-
-                        Delete a task
-                            delete [task number]
-
-                        Find a task by description
-                            find [search query]
-
-                        Exit the program
-                            exit
-
-                        Show this help message.
-                            help
-                        """;
+                return HELP_MESSAGE;
             default:
                 break;
         }
